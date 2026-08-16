@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kateryna Derevianko — Architektka</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: #1a1a1a; background: #fafaf8; }
+
+  nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.4rem 2.5rem; border-bottom: 0.5px solid #ddd;
+    position: sticky; top: 0; background: #fafaf8; z-index: 100;
+  }
+  .nav-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 300; letter-spacing: 0.05em; }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a { font-size: 11px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: #888; text-decoration: none; }
+  .nav-links a:hover { color: #1a1a1a; }
+
+  .hero { padding: 5rem 2.5rem 4rem; border-bottom: 0.5px solid #ddd; }
+  .hero-tag { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #aaa; margin-bottom: 1.5rem; }
+  .hero-name { font-family: 'Cormorant Garamond', serif; font-size: clamp(52px, 8vw, 84px); font-weight: 300; line-height: 1.0; margin-bottom: 1.5rem; }
+  .hero-name em { font-style: italic; }
+  .hero-sub { font-size: 15px; color: #555; max-width: 460px; line-height: 1.9; font-weight: 300; }
+  .hero-cta { margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-solid { font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.75rem 1.8rem; border: none; background: #1a1a1a; color: #fafaf8; cursor: pointer; }
+  .btn-solid:hover { background: #333; }
+  .btn-outline { font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.75rem 1.8rem; border: 0.5px solid #bbb; background: transparent; color: #1a1a1a; cursor: pointer; }
+  .btn-outline:hover { background: #f0f0ec; }
+
+  .section { padding: 4rem 2.5rem; border-bottom: 0.5px solid #ddd; }
+  .section-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #aaa; margin-bottom: 2.5rem; }
+
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+  .about-text { font-size: 15px; line-height: 1.9; color: #555; font-weight: 300; }
+  .about-text p + p { margin-top: 1rem; }
+  .skills-block { display: flex; flex-direction: column; gap: 1.2rem; }
+  .skill-row { border-top: 0.5px solid #ddd; padding-top: 1rem; }
+  .skill-cat { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #aaa; margin-bottom: 0.35rem; }
+  .skill-val { font-size: 13px; color: #555; line-height: 1.6; }
+
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; background: #ddd; }
+  .project-card { background: #fafaf8; padding: 2rem; cursor: default; transition: background 0.15s; }
+  .project-card:hover { background: #f3f3ef; }
+  .project-num { font-size: 11px; color: #bbb; letter-spacing: 0.1em; margin-bottom: 1.2rem; }
+  .project-title { font-family: 'Cormorant Garamond', serif; font-size: 21px; font-weight: 300; line-height: 1.3; margin-bottom: 0.8rem; }
+  .project-desc { font-size: 13px; color: #666; line-height: 1.75; }
+  .project-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 1.2rem; }
+  .tag { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 8px; border: 0.5px solid #ccc; color: #999; }
+
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .contact-intro { font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 300; line-height: 1.3; }
+  .contact-intro em { font-style: italic; }
+  .contact-details { display: flex; flex-direction: column; gap: 1.2rem; padding-top: 0.5rem; }
+  .contact-item { border-top: 0.5px solid #ddd; padding-top: 1rem; }
+  .contact-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #aaa; margin-bottom: 0.3rem; }
+  .contact-val { font-size: 14px; color: #555; }
+  .contact-val a { color: #555; text-decoration: none; }
+  .contact-val a:hover { color: #1a1a1a; }
+
+  footer { padding: 1.5rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+  .footer-name { font-size: 12px; color: #aaa; letter-spacing: 0.08em; }
+  .footer-copy { font-size: 12px; color: #aaa; }
+
+  @media (max-width: 640px) {
+    nav { padding: 1rem 1.2rem; }
+    .nav-links { gap: 1rem; }
+    .hero, .section { padding: 3rem 1.2rem; }
+    .hero-name { font-size: 44px; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    footer { padding: 1.2rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-name">Kateryna Derevianko</span>
+  <div class="nav-links">
+    <a href="#o-mnie">O mnie</a>
+    <a href="#projekty">Projekty</a>
+    <a href="#kontakt">Kontakt</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <p class="hero-tag">Architektura · Wizualizacja 3D · Warszawa</p>
+  <h1 class="hero-name">Kateryna<br><em>Derevianko</em></h1>
+  <p class="hero-sub">Architektka skupiona na projektowaniu przestrzeni łączących funkcjonalność z estetyką — od koncepcji mieszkaniowych po obiekty użyteczności publicznej i struktury modularne.</p>
+  <div class="hero-cta">
+    <button class="btn-solid" onclick="document.getElementById('projekty').scrollIntoView({behavior:'smooth'})">Zobacz projekty</button>
+    <button class="btn-outline" onclick="document.getElementById('kontakt').scrollIntoView({behavior:'smooth'})">Skontaktuj się</button>
+  </div>
+</section>
+
+<section class="section" id="o-mnie">
+  <p class="section-label">O mnie</p>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>Jestem początkującą architektką z dyplomem Politechniki Łódzkiej, z doświadczeniem zdobytym podczas praktyki zawodowej w warszawskim biurze projektowym.</p>
+      <p>Brałam udział w opracowaniu koncepcji architektonicznej dla inwestora prywatnego oraz w projekcie konkursowym. Interesuje mnie projektowanie przestrzeni, które łączą funkcjonalność z estetyką i dobrze odpowiadają na potrzeby użytkowników.</p>
+      <p>Posługuję się szerokim zakresem narzędzi projektowych i wizualizacyjnych, w tym narzędzi AI, co pozwala mi aktywnie uczestniczyć w każdym etapie procesu projektowego.</p>
+    </div>
+    <div class="skills-block">
+      <div class="skill-row">
+        <p class="skill-cat">Wykształcenie</p>
+        <p class="skill-val">Politechnika Łódzka — Architektura<br>Studia I stopnia (inżynierskie), 2022–2026</p>
+      </div>
+      <div class="skill-row">
+        <p class="skill-cat">Doświadczenie</p>
+        <p class="skill-val">DEDECO Sp. z o.o., Warszawa — Praktyka zawodowa<br>Koncepcja mixed-use, materiały konkursowe, modele 3D</p>
+      </div>
+      <div class="skill-row">
+        <p class="skill-cat">CAD / BIM</p>
+        <p class="skill-val">AutoCAD, ArchiCAD</p>
+      </div>
+      <div class="skill-row">
+        <p class="skill-cat">3D / Render</p>
+        <p class="skill-val">SketchUp, 3ds Max, Blender, V-Ray, D5 Render, Rayon</p>
+      </div>
+      <div class="skill-row">
+        <p class="skill-cat">Grafika</p>
+        <p class="skill-val">Photoshop, Procreate, Rayon</p>
+      </div>
+      <div class="skill-row">
+        <p class="skill-cat">Języki</p>
+        <p class="skill-val">Ukraiński (ojczysty) · Polski B2–C1 · Angielski B2</p>
+      </div>
+      <div class="skill-row">
+        <p class="skill-cat">Zainteresowania</p>
+        <p class="skill-val">Rysunek · Fotografia · Sztuka · Literatura · Podróże</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="projekty">
+  <p class="section-label">Wybrane projekty</p>
+  <div class="projects-grid">
+    <div class="project-card">
+      <p class="project-num">01</p>
+      <h3 class="project-title">Centrum Rehabilitacji Psychologicznej</h3>
+      <p class="project-desc">Koncepcja obiektu użyteczności publicznej skupiona na dobrostanie, integrująca naturalne materiały i zasady projektowania biofiliowego.</p>
+      <div class="project-tags"><span class="tag">Użyteczność publiczna</span><span class="tag">Koncepcja</span></div>
+    </div>
+    <div class="project-card">
+      <p class="project-num">02</p>
+      <h3 class="project-title">Budynek Wielorodzinny</h3>
+      <p class="project-desc">Projekt mieszkaniowy badający projektowanie skoncentrowane na człowieku poprzez organizację przestrzenną i zrównoważone podejście.</p>
+      <div class="project-tags"><span class="tag">Mieszkaniowy</span><span class="tag">Zrównoważony</span></div>
+    </div>
+    <div class="project-card">
+      <p class="project-num">03</p>
+      <h3 class="project-title">Galeria Sztuki</h3>
+      <p class="project-desc">Przestrzeń kulturalna zaprojektowana tak, by prowadzić odwiedzających przez starannie skomponowany układ ekspozycji.</p>
+      <div class="project-tags"><span class="tag">Kultura</span><span class="tag">Wnętrze</span></div>
+    </div>
+    <div class="project-card">
+      <p class="project-num">04</p>
+      <h3 class="project-title">Koncepcja Pawilonu „Modularność"</h3>
+      <p class="project-desc">System modularnych struktur z ponad 20 konfiguracjami — projekt konkursowy opracowany podczas praktyki w DEDECO, Warszawa.</p>
+      <div class="project-tags"><span class="tag">Modularny</span><span class="tag">Konkurs</span><span class="tag">3D</span></div>
+    </div>
+    <div class="project-card">
+      <p class="project-num">05</p>
+      <h3 class="project-title">Projekt Małego Mieszkania</h3>
+      <p class="project-desc">Koncepcja wnętrza kompaktowego mieszkania miejskiego, optymalizująca każdy metr kwadratowy poprzez przemyślone strefowanie.</p>
+      <div class="project-tags"><span class="tag">Wnętrze</span><span class="tag">Mieszkaniowy</span></div>
+    </div>
+    <div class="project-card">
+      <p class="project-num">06</p>
+      <h3 class="project-title">Aranżacja Wnętrza Kawiarni</h3>
+      <p class="project-desc">Projekt wnętrza komercyjnego z ciepłą materialnością, łączący estetykę z funkcjonalnym układem dla przestrzeni gastronomicznej.</p>
+      <div class="project-tags"><span class="tag">Komercyjny</span><span class="tag">Wnętrze</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="kontakt">
+  <p class="section-label">Kontakt</p>
+  <div class="contact-grid">
+    <p class="contact-intro">Otwarła się na nowe<br>możliwości —<br><em>stwórzmy coś razem.</em></p>
+    <div class="contact-details">
+      <div class="contact-item">
+        <p class="contact-label">E-mail</p>
+        <p class="contact-val"><a href="mailto:kateryna.der369@gmail.com">kateryna.der369@gmail.com</a></p>
+      </div>
+      <div class="contact-item">
+        <p class="contact-label">Telefon</p>
+        <p class="contact-val"><a href="tel:+48576185983">+48 576 185 983</a></p>
+      </div>
+      <div class="contact-item">
+        <p class="contact-label">Lokalizacja</p>
+        <p class="contact-val">Warszawa, Polska</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-name">Kateryna Derevianko · Architektka</span>
+  <span class="footer-copy">© 2026</span>
+</footer>
+
+</body>
+</html>
