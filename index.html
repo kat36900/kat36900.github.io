@@ -31,6 +31,9 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:1.4rem
 .btn-solid:hover{background:#333}
 .btn-outline{font-family:'Century Gothic','Futura','Trebuchet MS',sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;padding:0.75rem 1.8rem;border:0.5px solid #bbb;background:transparent;color:#1a1a1a;cursor:pointer}
 .btn-outline:hover{background:#f0f0ec}
+.btn-download{font-family:'Century Gothic','Futura','Trebuchet MS',sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;padding:0.75rem 1.8rem;border:0.5px solid #bbb;background:transparent;color:#1a1a1a;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem}
+.btn-download:hover{background:#f0f0ec}
+.btn-download svg{width:11px;height:11px;flex-shrink:0}
 
 .section{padding:4rem 2.5rem;border-bottom:0.5px solid #ddd}
 .section-label{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#aaa;margin-bottom:2.5rem}
@@ -296,6 +299,14 @@ footer{padding:1.5rem 2.5rem;display:flex;justify-content:space-between;align-it
   <div class="hero-cta">
     <button class="btn-solid" onclick="document.getElementById('projekty').scrollIntoView({behavior:'smooth'})">Zobacz projekty</button>
     <button class="btn-outline" onclick="document.getElementById('kontakt').scrollIntoView({behavior:'smooth'})">Skontaktuj się</button>
+    <a class="btn-download" href="PORTFOLIO.pdf" download>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 1v7M3.5 6l2.5 2.5L8.5 6"/><path d="M1.5 9.5v1h9v-1"/></svg>
+      Portfolio
+    </a>
+    <a class="btn-download" href="cv.png" download>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 1v7M3.5 6l2.5 2.5L8.5 6"/><path d="M1.5 9.5v1h9v-1"/></svg>
+      CV
+    </a>
   </div>
 </section>
 
